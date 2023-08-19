@@ -1,0 +1,46 @@
+public class Solution {
+ static int sMax(int []a, int n)
+ {
+     int largest = a[0];
+     int secondMax = -1;
+        for(int i=1; i<n; i++)
+        {
+            if(a[i]>largest)
+            {
+                secondMax = largest;
+                largest = a[i];
+            }
+            else if(a[i]<largest && a[i]>secondMax){
+                secondMax = a[i];
+            }
+
+        }
+        return secondMax;
+ }
+ static int sLow(int[] a, int n)
+ {
+     int smallest = a[0];
+     int secondLowest = Integer.MAX_VALUE;
+     for(int i=1; i<n; i++)
+     {
+         if(a[i]<smallest)
+         {
+             secondLowest = smallest;
+             smallest = a[i];
+         }
+         else if(a[i]!=smallest && a[i]<secondLowest)
+         {
+             secondLowest = a[i];
+         }
+     }
+     return secondLowest;
+
+ }
+    public static int[] getSecondOrderElements(int n, int []a) {
+        // Write your code here.
+       int secondMax = sMax(a, n);
+        int secondLowest = sLow(a, n);
+        return new int[]{secondMax, secondLowest};
+
+    }
+}
